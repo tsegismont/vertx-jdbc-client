@@ -33,8 +33,13 @@ import io.vertx.core.Handler;
 
 public class JDBCClient {
 
-  final io.vertx.ext.jdbc.JDBCClient delegate;
+  public static final io.vertx.lang.rxjava.TypeArg<JDBCClient> arg = new io.vertx.lang.rxjava.TypeArg<>(
+    obj -> new JDBCClient((io.vertx.ext.jdbc.JDBCClient) obj),
+    obj -> obj.getDelegate()
+  );
 
+  final io.vertx.ext.jdbc.JDBCClient delegate;
+  
   public JDBCClient(io.vertx.ext.jdbc.JDBCClient delegate) {
     this.delegate = delegate;
   }
