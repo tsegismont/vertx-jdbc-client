@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2011-2026 The original author or authors
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Apache License v2.0 which accompanies this distribution.
+ *
+ *      The Eclipse Public License is available at
+ *      http://www.eclipse.org/legal/epl-v10.html
+ *
+ *      The Apache License v2.0 is available at
+ *      http://www.opensource.org/licenses/apache2.0.php
+ *
+ * You may elect to redistribute this code under either of these licenses.
+ */
+
 package io.vertx.jdbcclient;
 
 import io.vertx.core.Vertx;
@@ -8,7 +24,8 @@ import io.vertx.sqlclient.Pool;
 import io.vertx.sqlclient.PoolOptions;
 import io.vertx.tests.sqlclient.tck.TracingTestBase;
 import org.hsqldb.Server;
-import org.junit.Assume;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -124,13 +141,17 @@ public class JDBCTracingTest extends TracingTestBase {
     return String.join("?", parts);
   }
 
+  @Ignore("HSQLDB does not support batched SELECT statements")
+  @Test
   @Override
   public void testTraceBatchQuery(TestContext ctx) {
-    Assume.assumeTrue(false);
+    super.testTraceBatchQuery(ctx);
   }
 
+  @Ignore("HSQLDB does not support batched SELECT statements")
+  @Test
   @Override
   public void testTracePooledBatchQuery(TestContext ctx) {
-    Assume.assumeTrue(false);
+    super.testTracePooledBatchQuery(ctx);
   }
 }
